@@ -8,6 +8,7 @@ import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import net.soy.permissioncheckproject.util.Utils
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
@@ -32,9 +33,9 @@ object RxImageConverters {
         return Observable.create(ObservableOnSubscribe<Bitmap> { emitter ->
             try {
                 val bitmap = when(source){
-//                    Sources.GALLERY -> Utils.convertGalleryImage(uri, context)
-//                    Sources.CAMERA -> Utils.convertImageCapture(uri)
-//                    else -> Utils.convertImageCapture(uri)
+                    Sources.GALLERY -> Utils.convertGalleryImage(uri, context)
+                    Sources.CAMERA -> Utils.convertImageCapture(uri)
+                    else -> Utils.convertImageCapture(uri)
                 }
                 bitmap?.let{emitter.onNext(bitmap)}
                 emitter.onComplete()
@@ -62,10 +63,10 @@ object RxImageConverters {
         }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
     }
 
-    private fun File.copyInputStreamToFile(inputStream: InputStream) {
+    private fun File.copyInputStreamToFile(inputStream: InputStream?) {
         inputStream.use { input ->
             this.outputStream().use { fileOut ->
-                input.copyTo(fileOut)
+                input?.copyTo(fileOut)
             }
         }
     }
