@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PermissionCheckProject</string>
+    <string name="permission_select_camera_gallery">카메라 또는 갤러리를 선택해주세요.</string>
+    <string name="btn_permission_camera">카메라</string>
+    <string name="btn_permission_gallery">갤러리</string>
+    <string name="permission_grant_to_access_camera_gallery">사진/갤러리 접근권한을 허용해야 합니다</string>
+    <string name="btn_permission_setting">권한설정</string>
+    <string name="btn_cancel">취소</string>
 </resources>
