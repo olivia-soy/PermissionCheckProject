@@ -1,6 +1,7 @@
 package net.soy.permissioncheckproject.constants
 
-import io.reactivex.android.BuildConfig
+import net.soy.permissioncheckproject.BuildConfig
+
 
 interface Constants {
     companion object {
